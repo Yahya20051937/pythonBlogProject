@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for post in posts %}
+<div class="blog">
+    <div class="blog_info 1">
+        <i>Published by {{post[3]}} at {{post[1]}}</i>
+    </div>
+    <p>
+        {{post[2]}}
+    </p>
+
+    <form action="/like_post" method="GET">
+        <input type="submit" value="Like" name="{{post[0]}}">
+    </form>
+
+    <form action="/comment_on_post" method="GET">
+        <input type="submit" value="Comment" name="{{post[0]}}">
+    </form>
+
+    <div class="blog_info 2">
+        <i>{{post[4]}} likes , {{post[6]}} comments, {{post[7]}} shares</i>
+    </div>
+
+</div>
+{% endfor %}
+{% endblock %}
